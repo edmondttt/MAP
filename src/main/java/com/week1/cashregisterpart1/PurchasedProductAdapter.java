@@ -17,7 +17,22 @@ public class PurchasedProductAdapter extends ArrayAdapter<PurchasedProduct> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // Inflate the custom layout for each item
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.listitem, parent, false);
+        }
 
+        // Get the current product object
+        PurchasedProduct product = getItem(position);
+
+        // Find and set the data to the views in the custom layout
+        TextView productNameTextView = convertView.findViewById(R.id.product_name);
+        TextView quantityTextView = convertView.findViewById(R.id.quantity);
+        TextView priceTextView = convertView.findViewById(R.id.price);
+
+        productNameTextView.setText(product.getName());
+        quantityTextView.setText("Quantity: " + product.getQuantity());
+        priceTextView.setText("Price: $" + product.getPrice());
 
         return convertView;
     }

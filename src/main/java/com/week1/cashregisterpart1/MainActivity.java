@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtProductName,txtProductQuantity, txtTotalPrice;
     private EditText editTextProductNumber;
     private ProductAdapter adapter;
-    public static List<Product> productList;
+    public static ArrayList<Product> productList;
     int productQuantity;
     double productPrice;
     private AlertDialog.Builder builder;
@@ -181,6 +181,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                setContentView(R.layout.activity_manager);
+                Intent Intent = new Intent(MainActivity.this, ManagerActivity.class);
+                Intent.putExtra("key", purchasedProducts);
+                Intent.putExtra("key2", productList);
+                startActivity(Intent);
             }
         });
     }
